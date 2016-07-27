@@ -16,8 +16,6 @@
             } else {
                 this.model = groupSchedule;
             }
-			
-
         },
 
         preRender: function () {

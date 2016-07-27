@@ -6,7 +6,7 @@
             'Groups: edit-request': 'showForm',
             'Groups: delete-request': 'delete',
             'Groups: create-request': 'showForm',
-            'Locations: selected': 'render',
+            'Locations: renderGroups': 'render',
             'Groups: selected': 'showSelectedGroup',
             'Groups: saved': 'showSelectedGroup',
             'GroupList paginator: page-selected': 'groupsRender',
@@ -29,15 +29,15 @@
             $('#left-menu').css('display', 'block');
         },
 
-        render: function () {
-            this.contentView = new This.ContentView();
+        render: function ([contentView, groupListView]) {
+            this.contentView = contentView || new This.ContentView();
             this.$content.html(this.contentView.render().el);
 
             if (this.groupListView) {
                 this.groupListView.remove();
                 this.groupListView.paginatorView.remove();
             }
-            this.groupListView = new This.GroupListView({
+            this.groupListView = groupListView || new This.GroupListView({
                 collection: store.groups
             });
 
