@@ -23,7 +23,6 @@
             this.$myGroups = this.$el.find('.myGroups');
             this.$paginator = this.$el.find('.paginator-place-holder');
             this.createPaginator();
-            this.renderGroups();
 
             return this;
         },
@@ -40,12 +39,14 @@
         renderGroups: function () {
             app.mediator.publish('Groups: rendered');
             if (app.filter.split('groupList')) {
+                console.log('renderGroups');
                 app.filter.split('groupList').forEach(this.renderOne, this);
             }
         },
 
         renderOne: function (group) {
             var smallGroupView = new This.SmallGroupView({model: group});
+
             this.$groupList.append(smallGroupView.render().el);
 
             return this;

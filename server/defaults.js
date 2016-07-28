@@ -95,6 +95,14 @@ var defaultData = {
         "login": "admin",
         "password": "1234"
     }, {
+        "firstName": "Kirill",
+        "lastName": "Kozak",
+        "role": "Coordinator",
+        "location": "Dnipro",
+        "photo": "/img/kirill-kozak.jpg",
+        "login": "asdf",
+        "password": "1234"
+    }, {
         "firstName": "Dmytro",
         "lastName": "Petin",
         "role": "Coordinator",

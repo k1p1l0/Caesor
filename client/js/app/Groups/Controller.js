@@ -6,7 +6,7 @@
             'Groups: edit-request': 'showForm',
             'Groups: delete-request': 'delete',
             'Groups: create-request': 'showForm',
-            'Locations: renderGroups': 'render',
+            'Locations: selected': 'render',
             'Groups: selected': 'showSelectedGroup',
             'Groups: saved': 'showSelectedGroup',
             'GroupList paginator: page-selected': 'groupsRender',
@@ -29,23 +29,27 @@
             $('#left-menu').css('display', 'block');
         },
 
-        render: function ([contentView, groupListView]) {
-            this.contentView = contentView || new This.ContentView();
+        render: function (locations) {
+            this.contentView = new This.ContentView();
+
             this.$content.html(this.contentView.render().el);
 
             if (this.groupListView) {
                 this.groupListView.remove();
                 this.groupListView.paginatorView.remove();
             }
-            this.groupListView = groupListView || new This.GroupListView({
+
+            this.groupListView = new This.GroupListView({
                 collection: store.groups
             });
 
             this.$sidebar.html(this.groupListView.render().el);
+            this.groupListView.renderGroups();
         },
 
         groupsRender: function () {
             if (this.trigger) {
+                console.log(123);
                 this.groupListView.renderGroups();
             }
         },
@@ -130,6 +134,7 @@
 
         deleteView: function () {
             if (this.trigger) {
+                console.log('deleted from groups');
                 this.trigger = false;
                 this.contentView.remove();
                 this.groupListView.remove();

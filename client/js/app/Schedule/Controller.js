@@ -15,18 +15,22 @@
         },
 
         start: function (locations) {
+            console.log('start');
             this.contentView = new CS.Groups.ContentView();
             this.groupListView = new CS.Groups.GroupListView({
                 collection: store.groups
             });
+
             this.$content.html(this.contentView.render().$el);  
-            this.$sidebar.html(this.groupListView.render().el);
+            this.$sidebar.html(this.groupListView.render().$el);
+
             app.mediator.publish('Locations: selected', locations);
-            app.mediator.publish('Locations: renderGroups', [this.contentView, this.groupListView]);
-            this.trigger = true;
             this.groupListView.renderGroups();
+
             this.render();
-            $('#left-menu').css('display','block');
+
+            this.trigger = true;
+            // $('#left-menu').css('display','block');
         },
 
         render: function () { 
@@ -43,6 +47,7 @@
 
         deleteView: function () {
             if (this.trigger) {
+                console.log('delete');
                 this.trigger = false;
                 this.contentView.remove();
                 this.groupListView.remove();

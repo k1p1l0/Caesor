@@ -1,15 +1,15 @@
 'use strict';
 
-var CS = {},
-    app = {},
-    templates = {},
-    store = {},
-    i = {};
+var CS = {}, //Constructors
+    app = {}, //Application instances
+    templates = {}, 
+    store = {}, //Storing some infromation
+    i = {}; //Info blocks like: 'Teacher', 'QC', 'Dnipropetrovsk'. Titles.
 
 
-System.register(CS, ['ErrorPage', 'Menu', 'Groups', 'Schedule', 'User', 'Locations', 'Messenger', 'About']);
+System.register(CS, ['ErrorPage', 'Menu', 'Groups', 'Schedule', 'User', 'Locations', 'Messenger', 'About']); //Put constructors in one scope
 
-System.register(app, ['mediator', 'filter', 'router', 'subRouters', 'notFound', 'user', 'userController', 'menuController']);
+System.register(app, ['mediator', 'filter', 'router', 'subRouters', 'notFound', 'user', 'userController', 'menuController']); //Put instance in one scope
 
 $(function () {
     System.startWebSocket();
